@@ -1,4 +1,4 @@
-name: Auto Commit
+name: Daily Commit
 
 on:
   schedule:
@@ -24,9 +24,9 @@ jobs:
       - name: Commit Changes
         run: |
           git config --global user.name "khemraj7"
-          git config --global user.email "YOUR_GITHUB_EMAIL"
+          git config --global user.email "kumarkhemraj614@gmail.com"
 
           git add .
-          git commit -m "auto commit" || echo "No changes"
+          git commit -m "daily commits" || echo "No changes"
 
           git push
