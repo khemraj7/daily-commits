@@ -1,0 +1,32 @@
+name: Auto Commit
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # every 6 hours
+
+  workflow_dispatch:
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update File
+        run: |
+          echo "$(date)" >> log.txt
+
+      - name: Commit Changes
+        run: |
+          git config --global user.name "khemraj7"
+          git config --global user.email "YOUR_GITHUB_EMAIL"
+
+          git add .
+          git commit -m "auto commit" || echo "No changes"
+
+          git push
